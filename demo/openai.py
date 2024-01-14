@@ -45,6 +45,9 @@ def go_image(
 
     response = client.chat.completions.create(
         model=model,
+        # `max_tokens` affects price even if not used to capacity
+        # https://platform.openai.com/docs/guides/rate-limits/reduce-the-max_tokens-to-match-the-size-of-your-completions
+        max_tokens=200,
         messages=[
             {
                 "role": ROLE_SYSTEM,
